@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "components/Application.scss";
 import DayList from "./DayList";
 import "components/Appointment";
@@ -46,28 +47,15 @@ const appointments = {
 };
 
 
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
-
-
-
 export default function Application(props) {
-  const [day, setDay] = useState("Monday");
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+  });
+
+  setState
+
+ 
   return (
     <main className="layout">
       <section className="sidebar">
@@ -81,9 +69,9 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-            days={days}
-            value={day}
-            onChange={setDay} />
+            days={state.days}
+            day={state.day}
+            setDay={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
