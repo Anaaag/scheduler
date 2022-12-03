@@ -1,4 +1,4 @@
-// returns an array of appointments for that day
+// returns an array of appointments for that given day
 export function getAppointmentsForDay(state, day) {
   const dayApp = [];
 
@@ -17,4 +17,17 @@ export function getAppointmentsForDay(state, day) {
 
 }
 
+// returns a new object containing the interview data when we pass it an object that contains the interviewer 
+
+export function getInterview(state, interview) {
+
+  if (!interview) {
+    return null
+  }
+
+  return { ...interview, interviewer: state.interviewers[interview.interviewer] }
+  
+  
+
+}
 
