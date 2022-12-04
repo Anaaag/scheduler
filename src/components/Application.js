@@ -7,6 +7,7 @@ import "components/Appointment";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
+
 // const appointments = {
 //   "1": {
 //     id: 1,
@@ -45,6 +46,8 @@ import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 //     time: "4pm",
 //   }
 // };
+
+
 
 export default function Application(props) {
 

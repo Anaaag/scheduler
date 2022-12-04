@@ -41,7 +41,7 @@ export default function useVisualMode(initial) {
 
 
 
-
+// pop removes last element returns that element
 
 // useState returns a pair: the current state value and a function that lets you update it
 
