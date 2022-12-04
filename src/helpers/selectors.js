@@ -27,7 +27,9 @@ export function getInterview(state, interview) {
 
   return { ...interview, interviewer: state.interviewers[interview.interviewer] }
   
-  
-
 }
+
+
+
+
 

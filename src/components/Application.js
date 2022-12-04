@@ -74,7 +74,7 @@ export default function Application(props) {
     );
   });
 
-let day = "monday"
+
 
 
 
@@ -121,5 +121,3 @@ let day = "monday"
   );
 }
 
-Appointment() 
-<Appointment />
