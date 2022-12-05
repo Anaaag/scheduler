@@ -1,11 +1,8 @@
 import React from "react";
 import { Fragment } from "react"
-
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-
 import "index.scss";
-
 import Button from "components/Button";
 import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
@@ -20,6 +17,7 @@ import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
 
+// Button
 
 storiesOf("Button", module)
   .addParameters({
@@ -37,6 +35,9 @@ storiesOf("Button", module)
     </Button>
   ));
 
+
+// Daylist
+
   storiesOf("DayList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -50,6 +51,10 @@ storiesOf("Button", module)
   .add("Wednesday", () => (
     <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
   ));
+
+
+
+// DayListItem
 
   const days = [
     {
@@ -69,19 +74,18 @@ storiesOf("Button", module)
     },
   ];
   
-  storiesOf("DayList", module)
-    .addParameters({
-      backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
-    })
-    .add("Monday", () => (
-      <DayList days={days} value={"Monday"} onChange={action("setDay")} />
-    ))
-    .add("Tuesday", () => (
-      <DayList days={days} value={"Tuesday"} onChange={action("setDay")} />
-    ))
-    .add("Wednesday", () => (
-        <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
-    ));
+  storiesOf("DayListItem", module) 
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  }) 
+  .add("Unselected", () => <DayListItem name="Monday" spots={5} />) 
+  .add("Selected", () => <DayListItem name="Monday" spots={5} selected />)
+  .add("Full", () => <DayListItem name="Monday" spots={0} />)
+  .add("Clickable", () => (
+    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> 
+  ));
+  
+// InterviewerListItem
 
     const interviewer = {
       id: 1,
@@ -112,9 +116,11 @@ storiesOf("Button", module)
         <InterviewerListItem
           name={interviewer.name}
           avatar={interviewer.avatar}
-          setInterviewer={action("setInterviewer")}
+          setInterviewer={() => action("setInterviewer")(interviewer.id)}
         />
       ));
+
+      // InterviewerList
 
       const interviewers = [
         { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
@@ -147,7 +153,8 @@ storiesOf("Button", module)
           onChange={action("setInterviewer")}
         />
       ));
-
+      
+   
       // Appointment Story
 
       storiesOf("Appointment", module)
@@ -170,7 +177,7 @@ storiesOf("Button", module)
     .add("Confirm", () => 
      <Confirm
      message="Delete the appointment?"
-     onConfirm={action("Onconfirm")}
+     onConfirm={action("onConfirm")}
      onCancel={action("onCancel")}
      />
     )
@@ -224,6 +231,3 @@ storiesOf("Button", module)
       </Fragment>
     ))
   
-
-
- 
