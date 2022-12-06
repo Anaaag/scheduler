@@ -6,6 +6,7 @@ import Empty from "./Empty";
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
 import useVisualMode from "hooks/useVisualMode";
 
 const EMPTY = "EMPTY";
@@ -64,11 +65,14 @@ export default function Appointment(props) {
           onCancel={back}
           onSave={save}
         />}
-      {mode === SAVING && <Status message={"Saving"} />}
-      {mode === DELETING && <status message={"Deleting"} />}
-      {mode === CONFIRM && <Confirm message={"Are you sure you would like to delete?"}
-        onCancel={back}
-        onConfirm={deleteInterview} />}
+      {mode === SAVING && 
+      <Status message={"Saving"} />}
+      {mode === DELETING &&
+       <Status message={"Deleting"} />}
+      {mode === CONFIRM && 
+      <Confirm message={"Are you sure you would like to delete?"}
+      onCancel={back}
+      onConfirm={deleteInterview} />}
       {mode === EDIT &&
         <Form
           student={props.interview.student}
@@ -76,16 +80,17 @@ export default function Appointment(props) {
           onCancel={back}
           onSave={save}
         />}
+
       {mode === ERROR_SAVE &&
         <Error
-          message={"Could not save appointment"}
-          onClose={back}
+        message={"Could not save appointment"}
+        onClose={back}
         />}
       {mode === ERROR_DELETE &&
         <Error
           message={"Could not delete appointment"}
           onClose={back}
-        />}
+       />}
     </article>
   )
 }

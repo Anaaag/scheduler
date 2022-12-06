@@ -10,7 +10,7 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
-  const setDay = day => setState({ ...state, day });
+  const setDay = (day) => setState({ ...state, day });
 
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function useApplicationData() {
       axios.get('http://localhost:8001/api/interviewers')
     ]).then((all) => {
       console.log(all)
-      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
+      setState((prev) => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
     })
   }, []);
 
@@ -75,9 +75,9 @@ export default function useApplicationData() {
 
   }
 
-  const spotsRemaining = function(appointment, id) {
-    
-  }
+  // const spotsRemaining = function(appointment, id) {
+
+  // }
 
 
 
