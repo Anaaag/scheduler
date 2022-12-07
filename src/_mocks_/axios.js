@@ -71,7 +71,7 @@ export default {
         status: 200,
         statusText: "OK",
         data: fixtures.appointments
-      })
+      });
     }
 
     if (url === "/api/interviewers") {
@@ -79,7 +79,18 @@ export default {
         status: 200,
         statusText: "OK",
         data: fixtures.interviewers
-      })
+      });
     }
+     return Promise.resolve()
+  }),
+
+  put: jest.fn(url => {
+    if (url === "/api/appointments/") {
+      return Promise.resolve({
+        status: 204,
+        statusText: "No Content"
+      });
+    }
+    return Promise.resolve();
   })
 }
