@@ -81,16 +81,25 @@ export default {
         data: fixtures.interviewers
       });
     }
-     return Promise.resolve()
+     
   }),
 
   put: jest.fn(url => {
-    if (url === "/api/appointments/") {
-      return Promise.resolve({
-        status: 204,
-        statusText: "No Content"
-      });
-    }
-    return Promise.resolve();
+    if (url === "/api/appointments") {
+    return Promise.resolve({
+      status: 204,
+      statusText: "No Content"
+    })
+  }
+  }),
+
+  delete: jest.fn(url => {
+    if (url === "/api/appointments") {
+    return Promise.resolve({
+      status: 204,
+      statusText: "No Content"
+    })
+  }
   })
+
 }
