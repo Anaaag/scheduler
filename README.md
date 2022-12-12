@@ -23,4 +23,10 @@ npm test
 ```sh
 npm run storybook
 ```
+## Screenshots
 
+!["Screenshot of appointment form"](https://github.com/Anaaag/scheduler/blob/master/docs/appointment-form.png?raw=true)
+
+!["Screenshot to delete appointment"](https://github.com/Anaaag/scheduler/blob/master/docs/delete-appointment.png?raw=true)
+
+!["Screenshot of scheduler"](https://github.com/Anaaag/scheduler/blob/master/docs/monday.png?raw=true)
