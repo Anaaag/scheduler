@@ -5,7 +5,7 @@ import InterviewerListItem from "./InterviewerListItem";
 
 
 
-export default function interviewerList(props) {
+export default function InterviewerList(props) {
   const interviewers = props.interviewers.map((interviewer) => {
 
     return (
@@ -27,6 +27,6 @@ export default function interviewerList(props) {
   );
 }
 
-interviewerList.propTypes = {
+InterviewerList.propTypes = {
   interviewers: PropTypes.array.isRequired,
 };

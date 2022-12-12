@@ -15,33 +15,36 @@ export default function useApplicationData() {
 
 
   function bookInterview(id, interview) {
-    // console.log(id, interview)
-
-
+  
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
-
+    
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
 
-    return axios.put(`/api/appointments/${id}`, { interview })
-      .then(() => {
-        const updatedDay = updateSpots(state, appointments)
-        setState({
-          ...state,
-          appointments,
-          updatedDay
 
-        });
-      })
+     return axios.put(`/api/appointments/${id}`, { 
+    
+      interview })
+        .then(() => {
+          
+          const days= updateSpots(state, appointments)
+          setState({
+            ...state,
+            appointments,
+            days
+  
+          });
+        })
+    
 
   }
 
-  function cancelInterview(id, interview) {
+  function cancelInterview(id) {
 
     const appointment = {
       ...state.appointments[id],
@@ -54,16 +57,18 @@ export default function useApplicationData() {
     }
 
     return axios.delete(`/api/appointments/${id}`).then(() => {
-      const updatedDay = updateSpots(state, appointments)
+      const days = updateSpots(state, appointments)
       setState({
         ...state,
         appointments,
-        updatedDay
+        days
       });
     })
   }
 
   const updateSpots = function (state, appointments) {
+
+    console.log("hey")
 
     const dayObj = state.days.find((d) => d.name === state.day)
 
@@ -90,7 +95,6 @@ export default function useApplicationData() {
       axios.get('http://localhost:8001/api/appointments'),
       axios.get('http://localhost:8001/api/interviewers'),
     ]).then((all) => {
-      // console.log(all)
       setState((prev) => ({
         ...prev,
         days: all[0].data,
@@ -100,7 +104,7 @@ export default function useApplicationData() {
     })
   }, []);
 
-  return { state, setDay, bookInterview, cancelInterview }
+  return { state, setDay, bookInterview, cancelInterview, updateSpots }
 }
 
 

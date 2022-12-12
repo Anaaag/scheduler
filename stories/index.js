@@ -2,7 +2,6 @@ import React from "react";
 import { Fragment } from "react"
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import "index.scss";
 import Button from "components/Button";
 import DayListItem from "components/DayListItem";
 import DayList from "components/DayList";
@@ -16,6 +15,7 @@ import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
+import "index.scss";
 
 // Button
 
@@ -114,6 +114,7 @@ storiesOf("Button", module)
       ))
       .add("Clickable", () => (
         <InterviewerListItem
+          id={interviewer.id}
           name={interviewer.name}
           avatar={interviewer.avatar}
           setInterviewer={() => action("setInterviewer")(interviewer.id)}
