@@ -3,36 +3,23 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
-import  useApplicationData from "hooks/useApplicationData";
+import useApplicationData from "hooks/useApplicationData";
 
 
 export default function Application(props) {
-  
-  const { 
-    state, 
-    setDay, 
-    bookInterview, 
+
+  const {
+    state,
+    setDay,
+    bookInterview,
     cancelInterview
   } = useApplicationData();
 
+  const interviewers = getInterviewersForDay(state, state.day);
 
-
-
-  // const appointments = getAppointmentsForDay(state, state.day)
-  const interviewers = getInterviewersForDay(state, state.day)
-
-  
-
-
-
-  // console.log('old interview', appointment.interview)
-  // console.log('new interview', interview)
-  // const interview = getInterview(state, appointment.interview);
-
- 
   const appointments = getAppointmentsForDay(state, state.day).map(
-    appointment => { 
-      
+    appointment => {
+
       return (
         <Appointment
           key={appointment.id}
@@ -45,8 +32,6 @@ export default function Application(props) {
       );
     }
   );
-
- 
 
   return (
     <main className="layout">
@@ -75,5 +60,5 @@ export default function Application(props) {
       </section>
     </main>
   );
-}
+};
 

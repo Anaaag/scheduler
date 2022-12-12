@@ -16,7 +16,7 @@ describe("Form", () => {
   it("renders without student name if not provided", () => {
     const { getByPlaceholderText } = render(
       <Form interviewers={interviewers} />
-    )
+    );
     expect(getByPlaceholderText("Enter Student Name")).toHaveValue("");
   });
 
@@ -35,8 +35,7 @@ describe("Form", () => {
       <Form
         interviewers={interviewers}
         onSave={onSave}
-      />)
-
+      />);
 
     fireEvent.click(getByText("Save"));
 
@@ -86,8 +85,6 @@ describe("Form", () => {
     });
 
     fireEvent.click(getByText("Cancel"));
-
-    // expect(queryByText(/student name cannot be blank/i)).toBeNull();
 
     expect(getByPlaceholderText("Enter Student Name")).toHaveValue("");
 

@@ -3,7 +3,7 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 
- 
+
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
@@ -12,12 +12,12 @@ export default function Form(props) {
   function reset() {
     setStudent("");
     setInterviewer(null);
-  }
+  };
 
   function cancel() {
     reset();
     props.onCancel();
-  }
+  };
 
 
   function validate() {
@@ -27,16 +27,13 @@ export default function Form(props) {
     }
 
     if (interviewer === null) {
-      setError("Please select an interviewer")
+      setError("Please select an interviewer");
       return;
     }
 
     setError("");
     props.onSave(student, interviewer)
-  }
-
-
-
+  };
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -67,5 +64,5 @@ export default function Form(props) {
         </section>
       </section>
     </main>
-  )
-}
+  );
+};

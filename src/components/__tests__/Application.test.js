@@ -1,24 +1,21 @@
 import React from "react";
-import { waitForElement, fireEvent, getAllByTestId, queryByText, wait } from "@testing-library/react";
-import { render, cleanup } from "@testing-library/react";
-import { getByText } from "@testing-library/react";
-import { prettyDOM } from "@testing-library/react";
-import { getByAltText } from "@testing-library/react";
-import { getByPlaceholderText } from "@testing-library/react";
-import { queryByAltText } from "@testing-library/react";
+import { 
+  waitForElement, 
+  fireEvent, 
+  getAllByTestId, 
+  queryByText, 
+  render,
+  cleanup,
+  getByText,
+  prettyDOM,
+  getByAltText,
+  getByPlaceholderText,
+  queryByAltText,
+} from "@testing-library/react";
 import axios from "__mocks__/axios";
-
-
-
-
-
 
 import Application from "components/Application";
 afterEach(cleanup);
-
-
-
-
 
 describe("Application", () => {
 
@@ -29,8 +26,7 @@ describe("Application", () => {
       fireEvent.click(getByText("Tuesday"));
       expect(getByText("Leopold Silvers")).toBeInTheDocument();
     });
-
-  });
+ });
 
 
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
@@ -112,5 +108,5 @@ describe("Application", () => {
     await waitForElement(() => getByText(container, "Error"));
 
     expect(getByText(appointment, "Could not delete")).toBeInTheDocument();
-  })
-})
+  });
+});

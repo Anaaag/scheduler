@@ -15,34 +15,33 @@ export default function useApplicationData() {
 
 
   function bookInterview(id, interview) {
-  
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    
+
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
 
 
-     return axios.put(`/api/appointments/${id}`, { 
-    
-      interview })
-        .then(() => {
-          
-          const days= updateSpots(state, appointments)
-          setState({
-            ...state,
-            appointments,
-            days
-  
-          });
-        })
-    
+    return axios.put(`/api/appointments/${id}`, {
 
-  }
+      interview
+    })
+      .then(() => {
+
+        const days = updateSpots(state, appointments)
+        setState({
+          ...state,
+          appointments,
+          days
+
+        });
+      })
+  };
 
   function cancelInterview(id) {
 
@@ -57,20 +56,18 @@ export default function useApplicationData() {
     }
 
     return axios.delete(`/api/appointments/${id}`).then(() => {
-      const days = updateSpots(state, appointments)
+      const days = updateSpots(state, appointments);
       setState({
         ...state,
         appointments,
         days
       });
     })
-  }
+  };
 
   const updateSpots = function (state, appointments) {
 
-    console.log("hey")
-
-    const dayObj = state.days.find((d) => d.name === state.day)
+    const dayObj = state.days.find((d) => d.name === state.day);
 
     let spots = 0;
 
@@ -83,11 +80,11 @@ export default function useApplicationData() {
       }
     }
 
-    const newDayObj = { ...dayObj, spots }
-    const updatedDay = state.days.map((d) => (d.name === state.day ? newDayObj : d))
+    const newDayObj = { ...dayObj, spots };
+    const updatedDay = state.days.map((d) => (d.name === state.day ? newDayObj : d));
 
     return updatedDay;
-  }
+  };
 
   useEffect(() => {
     Promise.all([
@@ -105,7 +102,7 @@ export default function useApplicationData() {
   }, []);
 
   return { state, setDay, bookInterview, cancelInterview, updateSpots }
-}
+};
 
 
 

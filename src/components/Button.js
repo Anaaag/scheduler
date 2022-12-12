@@ -9,8 +9,6 @@ export default function Button(props) {
     "button--danger": props.danger
   });
 
-
-
   return (
     <button
       className={buttonClass}
@@ -20,4 +18,4 @@ export default function Button(props) {
       {props.children}
     </button>
   );
-}
+};
